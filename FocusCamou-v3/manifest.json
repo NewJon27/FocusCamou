@@ -1,0 +1,52 @@
+{
+  "manifest_version": 3,
+  "name": "FocusCamou",
+  "version": "3.0",
+  "description": "Bypass websites detection of tab switches or window unfocus",
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "FocusCamou",
+    "default_icon": {
+      "16":  "icon_16_on.png",
+      "32":  "icon_32_on.png",
+      "48":  "icon_48_on.png",
+      "128": "icon_128_on.png"
+    }
+  },
+  "icons": {
+    "16":  "icon_16_on.png",
+    "32":  "icon_32_on.png",
+    "48":  "icon_48_on.png",
+    "128": "icon_128_on.png"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "commands": {
+    "toggle-bypass": {
+      "suggested_key": {
+        "default": "Alt+Shift+F"
+      },
+      "description": "Toggle FocusCamou on/off"
+    }
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true,
+      "world": "MAIN"
+    },
+    {
+      "matches": ["<all_urls>"],
+      "js": ["bridge.js"],
+      "run_at": "document_start",
+      "all_frames": true,
+      "match_about_blank": true
+    }
+  ],
+  "permissions": ["storage", "tabs", "scripting"],
+  "host_permissions": ["<all_urls>"]
+}
