@@ -2,7 +2,7 @@
 
 一个用于控制页面切屏检测伪装行为的浏览器扩展。
 
-## 安装
+## 安装 [Release](https://github.com/NewJon27/FocusCamou/releases)
 
 ### Chrome
 
